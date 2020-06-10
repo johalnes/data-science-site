@@ -1,0 +1,51 @@
+---
+id: bestpractice-general
+title: General best practice
+---
+
+
+### Version control 
+No matter how small or large the project is, it should be version controlled. Install [Git](), quickly read [the Git Handbook](https://guides.github.com/introduction/git-handbook/), where there also is a lot of good resources, or see the [youtube movies](https://www.youtube.com/githubguides). For a typically wokflow se [GitHub Flow](https://guides.github.com/introduction/flow/).
+
+Both [Rstudio](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN) and [VS Code](https://code.visualstudio.com/docs/editor/versioncontrol) have Git tools built-in, which makes Git easy!
+
+
+### Documentation
+Every project needs a readme file as the bare minimum, with desribtion of what problem is solved and how it's used. As code is changed over time, documentation should be as close to the code as possible and preferbly in the code.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="python"
+  values={[
+    {label: 'Python', value: 'python'},
+    {label: 'R', value: 'r'},
+  ]}>
+  <TabItem value="python">
+
+For Python use [Sphinx](https://medium.com/@richdayandnight/a-simple-tutorial-on-how-to-document-your-python-project-using-sphinx-and-rinohtype-177c22a15b5b). By using the [data science template](https://gitlab.kpmg.no/jalnes/data-science-template) this is already configured. So by running
+
+```
+cd docs\writeup
+make html
+```
+from the commandline within the root folder will autogenerate a HTML page. Further, this should be published on GitHub as a webpage and linked to in the Git repository. 
+
+This is also activated by default in the data science template, so the documentation is always updated when something is pushed to master.
+
+Remember to update the index.rst with description of the project and a flow diagram of the overall arcitecture is always a good idea. Sphinx have [Graphviz included](https://build-me-the-docs-please.readthedocs.io/en/latest/Using_Sphinx/UsingGraphicsAndDiagramsInSphinx.html) which can create diagrams from code, and by building piplines with [Prefect](https://docs.prefect.io/core/advanced_tutorials/etl.html) you'll get a constantly updated visiualization in addition to other benefits.
+
+To get the documentation from the code, add the filenames under "autosummary" in the file api-__project name__.rst.
+
+
+
+When editing the 
+</TabItem>
+  <TabItem value="r">This is an orange 🍊</TabItem>
+</Tabs>
+
+
+### Project structure
+
+Within all projects created by Insurnace Risk documentation and structure is essential
