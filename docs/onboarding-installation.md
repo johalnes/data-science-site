@@ -3,7 +3,7 @@ title: Set up local
 ---
 
 
-__Insurance analtyics uses a combination of Python (preffered) and R for analytical procjets, ETL and scripting.__
+__Insurance risk uses a combination of Python (preffered) and R for analytical procjets, ETL and scripting.__
 
 ### Program List
 

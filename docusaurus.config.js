@@ -1,14 +1,14 @@
 module.exports = {
   title: 'Documentation site',
   tagline: 'Insurance Analytics page for documentation, best practices and onboarding',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  url: 'https://johalnes.github.io',
+  baseUrl: '/data-science-site/',
   favicon: 'img/favicon.ico',
-  organizationName: 'kpmg-frm', // Usually your GitHub org/user name.
+  organizationName: 'johalnes', // Usually your GitHub org/user name.
   projectName: 'data-science-site', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Insurance Analytics',
+      title: 'Insurance Risk',
       logo: {
         alt: 'My Site Logo',
         src: 'img/KPMG_blue.png',
@@ -84,7 +84,7 @@ module.exports = {
       {
         docs: {
           // It is recommended to set document id as docs home page (`docs/` path).
-          homePageId: 'doc1',
+          homePageId: 'bestpractice-general',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:

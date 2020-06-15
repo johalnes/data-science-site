@@ -3,16 +3,18 @@ id: bestpractice-general
 title: General best practice
 ---
 
-
 ### Version control 
-No matter how small or large the project is, it should be version controlled. Install [Git](), quickly read [the Git Handbook](https://guides.github.com/introduction/git-handbook/), where there also is a lot of good resources, or see the [youtube movies](https://www.youtube.com/githubguides). For a typically wokflow se [GitHub Flow](https://guides.github.com/introduction/flow/).
+No matter how small or large the project is, it should be version controlled. Install [Git](), quickly read [the Git Handbook](https://guides.github.com/introduction/git-handbook/), where there also is a lot of good resources, or see the [youtube movies](https://www.youtube.com/githubguides). 
+For a typically workflow see [GitHub Flow](https://guides.github.com/introduction/flow/).
 
 Both [Rstudio](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN) and [VS Code](https://code.visualstudio.com/docs/editor/versioncontrol) have Git tools built-in, which makes Git easy!
 
 
 ### Documentation
-Every project needs a readme file as the bare minimum, with desribtion of what problem is solved and how it's used. As code is changed over time, documentation should be as close to the code as possible and preferbly in the code.
+Every project needs a readme file as the bare minimum, with description of what problem is solved and how it's used. As code is changed over time, documentation should be as close to the code as possible and preferbly in the code.
+This makes it more natural and less time consuming to update the documentation when the models are changed.
 
+***
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -38,14 +40,60 @@ Remember to update the index.rst with description of the project and a flow diag
 
 To get the documentation from the code, add the filenames under "autosummary" in the file api-__project name__.rst.
 
+When first creating documentation within your code, [VS code has a plugin](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) that can make it even easier. Just remember to have it on Google style! 
 
 
-When editing the 
 </TabItem>
-  <TabItem value="r">This is an orange 🍊</TabItem>
+  
+<TabItem value="r">
+R studio have autodocumentation built in, but it's required that you build a package. 
+
+When starting a new project choose New Package instead of new Project. Then one also can initialize Git from the very begining. 
+Rstudio creates some folders and files for you automatically. Except these additionall files, there is no difference between creating project and folder.
+
+In addition to the default folders, it's strongly recommended to also have a data folder. See Project structure below for more details.
+
+The documentation system is built with [Roxygen](https://support.rstudio.com/hc/en-us/articles/200532317-Writing-Package-Documentation) 
+and there is shortcut under code - "Insert roxygen skeleton" to get the parameters and form automatically. See the reference above for more details.
+  
+</TabItem>
 </Tabs>
 
+:::info
+Whatever choice of programming language there is a good idea to connect the documentation with version control. [GitHub Pages](https://pages.github.com/) or Gitlab Pages makes this easy!
+:::
+
+***
 
 ### Project structure
 
-Within all projects created by Insurnace Risk documentation and structure is essential
+All projects should start by thinking out what the end product should be like, and essiensial modules/building blocks to group functions. 
+By drawing and ensuring a modular design one makes it much easier to expand code with new models and develop the existing function to become even better.
+Thinking in individual modules on will ensure that this can be done without changing or impact the complete code.
+
+This thinking should also affect code and file structure. For instance having the models completly seperated by the dataflow is important in order to make more flexisble code and make the code reusable in other projects.
+If one have all files in the same folder you quickly end up with this
+
+```shell
+├── data1.xlsx
+├── data2.xlsx
+├── datafinal.xlsx
+├── model.R
+├── model description.docx
+├── model description final.docx
+├── model description final.ppt
+```
+By using version control and documentation desribed above one ensure that all documentation is up to date with the code, and previous versions are in Git. And how did one get to datafinal in this structure? Within the model or is it manual work with copy/paste from the input?
+
+By using a default project strurcture one can easily get more organized projects, which supports and makes best practice easy. Read more [here in the data driven blog](https://drivendata.github.io/cookiecutter-data-science/#getting-started) together with a lots of other tips and tricks. The below should be in all projects and here is the complete [template for Insurance risk](https://gitlab.kpmg.no/jalnes/data-science-template):
+
+```
+│
+├── data
+│   ├── processed            <- The final, canonical data sets for modeling.
+│   └── raw                  <- The original, immutable data dump.
+├── docs                     <- Documentation, preferably made from the code.
+├── scripts                  <- Standalone scripts, including data prepperation
+├── src                      <- Code for use in this project. Mostly models
+```
+
